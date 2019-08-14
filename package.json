@@ -1,0 +1,13 @@
+{
+  "name": "super-tiny-rx",
+  "version": "1.0.0",
+  "description": "super tiny rx, inspire by rxjs",
+  "main": "index.js",
+  "author": "zuisong",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "parcel": "^1.12.3",
+    "typescript": "^3.5.3"
+  }
+}
