@@ -1,0 +1,29 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "paths": {
+      "*": ["types/*"]
+    },
+    "outDir": "./dist",
+    "baseUrl": "src",
+    "declarationDir": "./out",
+    "downlevelIteration": true,
+    "sourceMap": true,
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "target": "es6",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom",
+    ]
+  },
+  "parcel-plugin-typescript": {
+    "transpileOnly": "transpileOnly"
+  }
+}
