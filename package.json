@@ -8,6 +8,6 @@
   "private": false,
   "devDependencies": {
     "parcel": "^1.12.3",
-    "typescript": "^3.5.3"
+    "typescript": "^3.7.3"
   }
 }
