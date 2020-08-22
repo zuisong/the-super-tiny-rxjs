@@ -4,6 +4,7 @@
     "paths": {
       "*": ["types/*"]
     },
+    "module": "ESNext",
     "outDir": "./dist",
     "baseUrl": "src",
     "declarationDir": "./out",
@@ -12,6 +13,7 @@
     "declaration": true,
     "emitDecoratorMetadata": true,
     "strict": true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "removeComments": true,
     "target": "es6",
@@ -20,7 +22,7 @@
     ],
     "lib": [
       "es2016",
-      "dom",
+      "dom"
     ]
   },
   "parcel-plugin-typescript": {
