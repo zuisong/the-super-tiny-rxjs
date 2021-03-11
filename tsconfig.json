@@ -1,31 +1,11 @@
 {
-  "compileOnSave": true,
   "compilerOptions": {
-    "paths": {
-      "*": ["types/*"]
-    },
-    "module": "ESNext",
-    "outDir": "./dist",
-    "baseUrl": "src",
-    "declarationDir": "./out",
     "downlevelIteration": true,
-    "sourceMap": true,
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "experimentalDecorators": true,
-    "removeComments": true,
-    "target": "es6",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "esModuleInterop":true,
+    "module": "ESNext",
+    "target": "es3",
     "lib": [
-      "es2016",
-      "dom"
+      "esnext",
     ]
   },
-  "parcel-plugin-typescript": {
-    "transpileOnly": "transpileOnly"
-  }
 }

@@ -1,32 +1,35 @@
 /* eslint-disable @typescript-eslint/camelcase */
-import { Configuration } from 'webpack'
+import { Configuration } from "webpack";
 // @ts-ignore
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import path from 'path'
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import path from "path";
 
 export default {
-  mode: 'production',
-  entry: './index.ts',
+  mode: "production",
+  entry: "./index.ts",
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
+        loader: "babel-loader",
+      },
+    ],
   },
   resolve: {
-    extensions: ['.ts', '.js', '.tsx']
+    extensions: [".ts", ".js", ".tsx"],
   },
   plugins: [
     //@ts-ignore
     new CleanWebpackPlugin({
-      verbose: true
-    })
-  ]
-} as Configuration
+      verbose: true,
+    }),
+  ],
+  optimization: {
+    usedExports: false,
+  },
+} as Configuration;
