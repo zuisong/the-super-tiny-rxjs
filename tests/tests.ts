@@ -19,7 +19,7 @@ function doSomethingAsync(): Observable<number> {
 const $res = doSomethingAsync()
 
 $res
-  .filter(it => it % 2 == 0)
-  .map(it => it * 1000)
+  .filter((it) => it % 2 == 0)
+  .map((it) => it * 1000)
   .debounce(500)
-  .subscribe(it => console.log(new Date().getSeconds(), it))
+  .subscribe((it) => console.log(new Date().getSeconds(), it))
