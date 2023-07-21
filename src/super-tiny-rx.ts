@@ -1,5 +1,9 @@
 export interface Observable<T> {
-  subscribe: (onNext: (arg: T) => void, onFinish?: () => void, onError?: (error: Error) => void) => void
+  subscribe: (
+    onNext: (arg: T) => void,
+    onFinish?: () => void,
+    onError?: (error: Error) => void,
+  ) => void
 
   // ---------------------------//
   debounce: (ms: number) => Observable<T>
@@ -22,19 +26,19 @@ export interface Observer<T> {
 }
 
 export class Subject<T> implements Observable<T>, Observer<T> {
-  finish (): void {
+  finish(): void {
     if (this.onFinish) {
       this.onFinish()
     }
   }
 
-  error (err: Error): void {
+  error(err: Error): void {
     if (this.onError) {
       this.onError(err)
     }
   }
 
-  next (item: T): void {
+  next(item: T): void {
     this?.onNext?.(item)
   }
 
@@ -43,7 +47,11 @@ export class Subject<T> implements Observable<T>, Observer<T> {
   private onFinish: (() => void) | undefined
   private onError: ((e: Error) => void) | undefined
 
-  subscribe (onNext: (arg: T) => void, onFinish?: () => void, onError?: (error: Error) => void): void {
+  subscribe(
+    onNext: (arg: T) => void,
+    onFinish?: () => void,
+    onError?: (error: Error) => void,
+  ): void {
     if (onNext) {
       this.onNext = onNext
     }
@@ -65,7 +73,7 @@ export class Subject<T> implements Observable<T>, Observer<T> {
     return $new
   }
 
-  filter (func: (it: T) => boolean): Observable<T> {
+  filter(func: (it: T) => boolean): Observable<T> {
     const $new = new Subject<T>()
     this.subscribe((it) => {
       if (func(it)) {
@@ -85,7 +93,7 @@ export class Subject<T> implements Observable<T>, Observer<T> {
     return $new
   }
 
-  debounce (ms: number): Observable<T> {
+  debounce(ms: number): Observable<T> {
     const $new = new Subject<T>()
     let time = Date.now()
     let item: T | undefined
@@ -100,7 +108,7 @@ export class Subject<T> implements Observable<T>, Observer<T> {
     return $new
   }
 
-  window (ms: number): Observable<T[]> {
+  window(ms: number): Observable<T[]> {
     const $new = new Subject<T[]>()
     let temp: T[] = []
     this.subscribe((it) => {
@@ -116,7 +124,7 @@ export class Subject<T> implements Observable<T>, Observer<T> {
   }
 }
 
-export function getObserver<T> (): Observer<T> {
+export function getObserver<T>(): Observer<T> {
   const subject = new Subject()
   return subject
 }

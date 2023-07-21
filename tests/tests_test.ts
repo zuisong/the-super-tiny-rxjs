@@ -2,7 +2,7 @@ import { type Observable, Subject } from '../index.ts'
 
 console.log(new Date().getSeconds(), ' --> start ')
 
-function doSomethingAsync (): Observable<number> {
+function doSomethingAsync(): Observable<number> {
   const $s = new Subject<number>()
   let i = 0
   const interval = setInterval(() => {
@@ -23,5 +23,13 @@ $res
   .map((it) => it * 1000)
   .debounce(500)
   .subscribe((it) => {
-    console.log(new Date().getSeconds(), it)
+    console.log(new Date().getTime(), it)
   })
+
+await delay(3000)
+
+function delay(arg0: number) {
+  return new Promise((r) => {
+    setTimeout(r, arg0)
+  })
+}
