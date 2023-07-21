@@ -1,1 +1,1 @@
-export * from './src/super-tiny-rx'
+export * from './src/super-tiny-rx.ts'

@@ -1,8 +1,8 @@
-import { Observable, Subject } from '../index'
+import { type Observable, Subject } from '../index.ts'
 
 console.log(new Date().getSeconds(), ' --> start ')
 
-function doSomethingAsync(): Observable<number> {
+function doSomethingAsync (): Observable<number> {
   const $s = new Subject<number>()
   let i = 0
   const interval = setInterval(() => {
@@ -19,7 +19,9 @@ function doSomethingAsync(): Observable<number> {
 const $res = doSomethingAsync()
 
 $res
-  .filter((it) => it % 2 == 0)
+  .filter((it) => it % 2 === 0)
   .map((it) => it * 1000)
   .debounce(500)
-  .subscribe((it) => console.log(new Date().getSeconds(), it))
+  .subscribe((it) => {
+    console.log(new Date().getSeconds(), it)
+  })

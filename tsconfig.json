@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "downlevelIteration": true,
     "esModuleInterop":true,
+    "allowImportingTsExtensions": true,
     "module": "ESNext",
-    "target": "es3",
+    "moduleResolution": "Bundler",
+    "strictNullChecks": true,
+    "target": "ES2015",
     "lib": [
-      "esnext",
+      "ESNext",
     ]
   },
 }
