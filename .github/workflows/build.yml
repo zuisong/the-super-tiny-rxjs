@@ -3,9 +3,9 @@ name: Build
 on:
   push:
     branches:
-    - main
-    - master
-    - release/*
+      - main
+      - master
+      - release/*
 
 jobs:
   build:
@@ -15,20 +15,15 @@ jobs:
       ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     strategy:
       matrix:
-        node_version: ['14']
+        node_version: ["latest", "lts/*"]
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node_version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node_version }}
-    - name: Setup PNPM
-      run: |
-        npm i -g pnpm
-    - name: Build
-      run: |
-        pnpm i
-        npm run build
-
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      - run: npm i -g pnpm
+      - run: pnpm i
+      - run: pnpm run build
