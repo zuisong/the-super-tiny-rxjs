@@ -1,5 +1,5 @@
 import { type Observable, Subject } from '../index.ts'
-
+import { delay } from 'jsr:@std/async'
 console.log(new Date().getSeconds(), ' --> start ')
 
 function doSomethingAsync(): Observable<number> {
@@ -8,7 +8,7 @@ function doSomethingAsync(): Observable<number> {
   const interval = setInterval(() => {
     $s.next(new Date().getSeconds())
     i++
-    if (i >= 1000) {
+    if (i >= 10) {
       clearInterval(interval)
       $s.finish()
     }
@@ -27,9 +27,3 @@ $res
   })
 
 await delay(3000)
-
-function delay(arg0: number) {
-  return new Promise((r) => {
-    setTimeout(r, arg0)
-  })
-}
